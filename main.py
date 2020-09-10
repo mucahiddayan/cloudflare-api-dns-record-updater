@@ -24,17 +24,18 @@ with open(filename, mode="r") as file:
 
     cloudFlare = CloudFlare(email=config['email'], apikey=config['apiKey'],zone=config['zone'])
     currentIp = cloudFlare._getIp()
-    if  currentIp != config.get('lastIp', "NOT"):
+    lastIp = config.get('lastIp', "NOT")
+    if  currentIp != lastIp:
         config.update({'lastIp': currentIp})
-        logger.info('Ip is changed. It will be updated ')
-        logger.info(datetime.datetime.now())
+        logger.info('Ip is changed ' +lastIp+' It will be updated '+ currentIp)
 
         with open(filename,mode='w') as fileToWrite:
             yaml.safe_dump(config,fileToWrite,encoding='utf-8', allow_unicode=True)
-            cloudFlare.updateRecordIpById("aba7977d352ada21e607cc1f3afe6209")
-            cloudFlare.updateRecordIpByName("xn--mcahiddayan-thb.com")
-    else:
-        logger.info('Ip is not changed')
+            cloudFlare.updateRecordIpById("aba7977d352ada21e607cc1f3afe6209") #www
+            cloudFlare.updateRecordIpById("b7950edd42222a2dc393854697a92c78") #root
+            cloudFlare.updateRecordIpById("1a3d2848a0d53386c9f4521f241ccf2b") #mail
+            cloudFlare.updateRecordIpById("e5c5bd5c6b8902d20eefde06485687e4") #storage
+
 
 
 

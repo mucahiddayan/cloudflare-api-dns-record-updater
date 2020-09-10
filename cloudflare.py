@@ -31,9 +31,11 @@ class CloudFlare:
         return requests.post()
 
     def findRecordByName(self, name):
-        r = requests.get(self.getDnsRecordsUri(), headers=self._getHeaders()).json()
+        r = self.listRecords()
         return filter(lambda record: record['name'] == name, r['result'] )
 
+    def listRecords(self):
+        return requests.get(self.getDnsRecordsUri(), headers=self._getHeaders()).json()
 
     def findRecordById(self, id):
         r = requests.get(self.getDnsRecordsUri(id), headers=self._getHeaders()).json()
