@@ -31,8 +31,8 @@ with open(filename, mode="r") as file:
 
         with open(filename,mode='w') as fileToWrite:
             yaml.safe_dump(config,fileToWrite,encoding='utf-8', allow_unicode=True)
+            cloudFlare.updateRecordIpById("9ccdfe71e7913f4ec32bc74a70546b64") #root
             cloudFlare.updateRecordIpById("aba7977d352ada21e607cc1f3afe6209") #www
-            cloudFlare.updateRecordIpById("b7950edd42222a2dc393854697a92c78") #root
             cloudFlare.updateRecordIpById("1a3d2848a0d53386c9f4521f241ccf2b") #mail
             cloudFlare.updateRecordIpById("e5c5bd5c6b8902d20eefde06485687e4") #storage
 
