@@ -35,6 +35,7 @@ with open(filename, mode="r") as file:
             cloudFlare.updateRecordIpById("aba7977d352ada21e607cc1f3afe6209") #www
             cloudFlare.updateRecordIpById("1a3d2848a0d53386c9f4521f241ccf2b") #mail
             cloudFlare.updateRecordIpById("e5c5bd5c6b8902d20eefde06485687e4") #storage
+            cloudFlare.updateRecordIpById("d43fb7f301ada8d107e1201716fef0f7") #development
 
 
 
